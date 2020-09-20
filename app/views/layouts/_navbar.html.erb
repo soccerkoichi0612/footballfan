@@ -11,7 +11,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">
-               <li class="nav-item"></li>
+               <li class="nav-item"><%= link_to 'サッカーチーム一覧', teams_path %></li>
                <li class="dropdown-divider"></li>
                <li class="nav-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
             </ul>
@@ -23,7 +23,7 @@
             <ul class="dropdown-menu dropdown-menu-right">
               <li class="dropdown-item"><%= link_to 'Sign up', signup_path %></li>
         　     <li class="dropdown-item"><%= link_to 'ログイン', login_path %></li>
-        　     <li class="dropdown-item"></li>
+        　     <li class="dropdown-item"><%= link_to 'サッカーチーム一覧', teams_path %></li>
         　   </ul>
           </li>
         <% end %>
