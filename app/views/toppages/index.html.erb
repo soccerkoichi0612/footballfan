@@ -4,6 +4,7 @@
   <div class='home'>
       <div class='text-center'>
           <h1>お気に入りにサッカーチームを追加しよう！</h1>
+          <h2><%= link_to 'サッカーチーム一覧', teams_path %></h2>
       </div>
   </div>
 <% else %>
@@ -12,6 +13,7 @@
           <h1>好きなチームの情報を共有しよう！</h1>
           <%= link_to '今すぐ会員登録', signup_path, class: 'btn btn-lg btn-primary' %>
           <p><%= link_to 'ログイン', login_path %></p>
+          <h2><%= link_to 'サッカーチーム一覧', teams_path %></h2>
       </div>
   </div>
 <% end %>
