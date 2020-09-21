@@ -4,5 +4,11 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @team = Team.find(params[:id])
+    
+    if logged_in?
+      @micropost = current_user.microposts.build  # form_with 用
+    end
+    @microposts = @team.microposts.order(id: :desc).page(params[:page])
   end
 end

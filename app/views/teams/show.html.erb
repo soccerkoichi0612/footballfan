@@ -1,2 +1,47 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<div class="row">
+  <aside class="col-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= @team.name %></h3>
+      </div>
+      <div class="card-body">
+        <img class="rounded img-fluid" src="/<%= @team.image_file%>" alt="<%= @team.name %>">
+      </div>
+    </div>
+    <div class="form my-5">
+      <%= form_with(model: @micropost, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+          <%= f.hidden_field :team_id, :value => @team.id %>
+        </div>
+        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </div>
+  </aside>
+  <div class="col-sm-8">
+    <div class="timeline">
+        <h2 class="text-center">タイムライン</h2>
+        <ul class="list-unstyled">
+            <% @microposts.each do |micropost| %>
+                <li class="media mb-3">
+                    <img class="mr-2 rounded" src="<%= gravatar_url(micropost.user, { size: 50 }) %>" alt="">
+                    <div class="media-body">
+                        <div>
+                            <%= micropost.user.name %> <span class="text-muted">posted at <%= micropost.created_at %></span>
+                        </div>
+                        <div>
+                            <p><%= micropost.content %></p>
+                        </div>
+                        <div>
+                            <% if current_user == micropost.user %>
+                              <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                            <% end %>
+                        </div>
+                    </div>
+                </li>
+            <% end %>
+            <%= paginate @microposts %>
+        </ul>
+    </div>
+  </div>
+</div>
