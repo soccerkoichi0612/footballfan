@@ -8,15 +8,17 @@
         <img class="rounded img-fluid" src="/<%= @team.image_file%>" alt="<%= @team.name %>">
       </div>
     </div>
-    <div class="form my-5">
-      <%= form_with(model: @micropost, local: true) do |f| %>
-        <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
-          <%= f.hidden_field :team_id, :value => @team.id %>
-        </div>
-        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-      <% end %>
-    </div>
+    <% if logged_in? %>
+      <div class="form my-5">
+        <%= form_with(model: @micropost, local: true) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :content, class: 'form-control', rows: 5 %>
+            <%= f.hidden_field :team_id, :value => @team.id %>
+          </div>
+          <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    <% end %>
   </aside>
   <div class="col-sm-8">
     <div class="timeline">
@@ -34,7 +36,8 @@
                         </div>
                         <div>
                             <% if current_user == micropost.user %>
-                              <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                              <%= link_to "削除", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                              <%= link_to 'このメッセージを編集する', edit_micropost_path(micropost), class: 'btn btn-success btn-sm' %>
                             <% end %>
                         </div>
                     </div>
