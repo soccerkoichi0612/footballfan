@@ -3,6 +3,7 @@
 <%= form_with(model: @micropost, local: true) do |f| %>
   <%= f.label :content, '投稿内容' %>
   <%= f.text_field :content %>
+  <%= f.hidden_field :team_id %>
 
   <%= f.submit '投稿' %>
 <% end %>

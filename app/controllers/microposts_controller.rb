@@ -8,8 +8,8 @@ class MicropostsController < ApplicationController
       flash[:success] = 'メッセージを投稿しました。'
       redirect_back(fallback_location: root_path)
     else
-      @microposts = current_user.microposts.order(id: :desc).page(params[:page])
-      @team = Team.find(params[:team_id])
+      @team = Team.find(params[:micropost][:team_id])
+      @microposts = @team.microposts.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
       render 'teams/show'
     end
@@ -21,10 +21,10 @@ class MicropostsController < ApplicationController
   
   def update
     @micropost = Micropost.find(params[:id])
-
+    @team = Team.find(params[:micropost][:team_id])
     if @micropost.update(micropost_params)
       flash[:success] = 'Message は正常に更新されました'
-      redirect_back(fallback_location: root_path)
+      redirect_to @team
     else
       flash.now[:danger] = 'Message は更新されませんでした'
       render :edit
