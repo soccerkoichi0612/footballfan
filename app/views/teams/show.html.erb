@@ -8,6 +8,7 @@
         <img class="rounded img-fluid" src="/<%= @team.image_file%>" alt="<%= @team.name %>">
       </div>
     </div>
+    <%= render 'favorites/follow_button', team: @team %>
     <% if logged_in? %>
       <div class="form my-5">
         <%= form_with(model: @micropost, local: true) do |f| %>
@@ -15,7 +16,7 @@
             <%= f.text_area :content, class: 'form-control', rows: 5 %>
             <%= f.hidden_field :team_id, :value => @team.id %>
           </div>
-          <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+          <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
         <% end %>
       </div>
     <% end %>

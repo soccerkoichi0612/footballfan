@@ -1,0 +1,19 @@
+ <ul class="list-unstyled">
+    <% teams.each do |team| %>
+      <li class="media">
+        <img class="mr-2 rounded" src="/<%= team.image_file%>" alt="<%= team.name %>" width="300" height="225">
+        <div class="media-body">
+          <div>
+            <%= team.name %>
+          </div>
+          <div>
+            <p><%= link_to 'View details', team_path(team) %></p>
+          </div>
+          <div class="w-50">
+              <%= render 'favorites/follow_button', team: team %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate teams %>

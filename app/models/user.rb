@@ -7,4 +7,20 @@ class User < ApplicationRecord
     has_secure_password
     
     has_many :microposts
+    has_many :favorites
+    has_many :likes, through: :favorites, source: :team
+    
+    def favorite(team)
+       self.favorites.find_or_create_by(team_id: team.id) 
+    end
+    
+    def unfavorite(team)
+        favorite = self.favorites.find_by(team_id: team.id)
+        favorite.destroy if favorite
+    end
+
+    def favorite?(team)
+      self.likes.include?(team)
+    end
+  
 end

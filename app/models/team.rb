@@ -3,4 +3,6 @@ class Team < ApplicationRecord
     validates :image_file, presence: true
     
     has_many :microposts
+    has_many :favorites
+    has_many :fans, through: :favorites, source: :user
 end

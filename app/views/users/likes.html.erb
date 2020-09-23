@@ -12,5 +12,6 @@
       <li class="nav-item"><a href="#" class="nav-link">タイムライン</a></li>
       <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入りチーム  <span class="badge badge-secondary"><%= @count_likes %></span></a></li>
     </ul>
+    <%= render '/teams/teams', teams: @likes %>
   </div>
 </div>
