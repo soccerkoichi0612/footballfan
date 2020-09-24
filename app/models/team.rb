@@ -5,4 +5,5 @@ class Team < ApplicationRecord
     has_many :microposts
     has_many :favorites
     has_many :fans, through: :favorites, source: :user
+    
 end

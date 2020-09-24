@@ -22,5 +22,9 @@ class User < ApplicationRecord
     def favorite?(team)
       self.likes.include?(team)
     end
+    
+    def feed_microposts
+      Micropost.where(team_id: self.like_ids )
+    end
   
 end
