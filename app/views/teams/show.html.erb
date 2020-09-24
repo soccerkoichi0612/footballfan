@@ -8,9 +8,9 @@
         <img class="rounded img-fluid" src="/<%= @team.image_file%>" alt="<%= @team.name %>">
       </div>
     </div>
-    <%= render 'favorites/follow_button', team: @team %>
     <% if logged_in? %>
-    　<% if current_user.favorite?(@team) %>
+      <%= render 'favorites/follow_button', team: @team %>
+      <% if current_user.favorite?(@team) %>
         <div class="form my-5">
           <%= form_with(model: @micropost, local: true) do |f| %>
             <div class="form-group">

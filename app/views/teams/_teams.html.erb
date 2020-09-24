@@ -10,7 +10,9 @@
             <p><%= link_to 'View details', team_path(team) %></p>
           </div>
           <div class="w-50">
+            <% if logged_in? %>
               <%= render 'favorites/follow_button', team: team %>
+            <% end %>
           </div>
         </div>
       </li>
