@@ -3,10 +3,11 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: [:destroy]
 
   def create
+    @team = Team.find(params[:micropost][:team_id])
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = 'メッセージを投稿しました。'
-      redirect_back(fallback_location: root_path)
+      redirect_to @team
     else
       @team = Team.find(params[:micropost][:team_id])
       @microposts = @team.microposts.order(id: :desc).page(params[:page])
@@ -32,12 +33,13 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
+    @micropost = Micropost.find(params[:id])
+    @team = @micropost.team
     @micropost.destroy
     flash[:success] = 'メッセージを削除しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to @team
   end
   
-
   private
 
   def micropost_params
