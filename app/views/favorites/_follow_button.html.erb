@@ -1,11 +1,11 @@
   <% if current_user.favorite?(team) %>
     <%= form_with(model: current_user.favorites.find_by(team_id: team.id), local: true, method: :delete) do |f| %>
-      <%= f.hidden_field :team_id, :value => team.id %>
+      <%= f.hidden_field :team_id, :value => team.id, id: "team_id_#{team.id}" %>
       <%= f.submit 'お気に入りからはずす', class: 'btn btn-danger btn-block' %>
     <% end %>
   <% else %>
     <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
-      <%= f.hidden_field :team_id, :value => team.id %>
+      <%= f.hidden_field :team_id, :value => team.id, id: "team_id_#{team.id}" %>
       <%= f.submit 'お気に入りに追加', class: 'btn btn-primary btn-block' %>
     <% end %>
   <% end %>
