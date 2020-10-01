@@ -11,6 +11,7 @@ class MicropostsController < ApplicationController
     else
       @team = Team.find(params[:micropost][:team_id])
       @microposts = @team.microposts.order(id: :desc).page(params[:page])
+      @fans = Team.find(params[:micropost][:team_id]).fans
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
       render 'teams/show'
     end
