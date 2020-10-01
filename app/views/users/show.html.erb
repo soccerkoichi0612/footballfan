@@ -1,15 +1,15 @@
 <div class="row">
   <aside class="col-sm-4">
     <div class="card">
-  　   <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
-  　　　<div class="card-body">
-    　　<h3 class="card-title"><%= @user.name %></h3>
-  　   </div>
-　  </div>
-　  <ul>
-　    <li class = "btn btn-primary btn-sm"><a style="color:white;" href="<%= followings_user_path(@user) %>">フォローユーザ<span class="badge badge-secondary"><%= @count_followings %></span></a></li>
-　    <li class = "btn btn-primary btn-sm"><a style="color:white;" href="<%= followers_user_path(@user) %>">フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></li>
-　  </ul>
+      <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
+      <div class="card-body">
+        <h3 class="card-title"><%= @user.name %></h3>
+      </div>
+    </div>
+    <ul>
+      <li class = "btn btn-primary btn-sm"><a style="color:white;" href="<%= followings_user_path(@user) %>">フォローユーザ<span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+      <li class = "btn btn-primary btn-sm"><a style="color:white;" href="<%= followers_user_path(@user) %>">フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></li>
+    </ul>
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
