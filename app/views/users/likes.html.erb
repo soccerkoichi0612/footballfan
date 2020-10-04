@@ -18,7 +18,7 @@
            <div class="container">
              <div class="row">
                <div class="col-sm-12 text-center">
-                 <img class="mr-2 rounded" src="/<%= team.image_file%>" alt="<%= team.name %>" style="max-width: 300px; max-height: 225px; width: auto; height: auto;">
+                 <img class="mr-2 rounded" src="<%= team.image_file.url if team.image_file? %>" alt="<%= team.name %>" style="max-width: 300px; max-height: 225px; width: auto; height: auto">
                </div>
                <div class="col-sm-12">
                 <div class="media-body">

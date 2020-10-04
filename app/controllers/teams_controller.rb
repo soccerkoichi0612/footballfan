@@ -1,6 +1,9 @@
 class TeamsController < ApplicationController
+  before_action :require_user_logged_in, only: [:create]
+  
   def index
     @teams = Team.order(id: :desc).page(params[:page]).per(25)
+    @team = Team.new
   end
 
   def show
@@ -11,4 +14,23 @@ class TeamsController < ApplicationController
     end
     @microposts = @team.microposts.order(id: :desc).page(params[:page])
   end
+  
+  def create
+    @team = Team.create(team_params)
+    if @team.save
+      flash[:success] = 'チームを追加しました。'
+      redirect_to teams_url
+    else
+      @teams = Team.order(id: :desc).page(params[:page]).per(25)
+      flash.now[:danger] = 'チームの追加に失敗しました。'
+      render '/teams/index'
+    end
+  end
+  
+  private
+  
+  def team_params
+    params.require(:team).permit(:name, :image_file)
+  end
+
 end

@@ -4,9 +4,9 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-4 text-center">
-              <img class="mr-2 rounded" src="/<%= team.image_file%>" alt="<%= team.name %>" style="max-width: 300px; max-height: 225px; width: auto; height: auto;">
+              <img src="<%= team.image_file.url if team.image_file? %>" alt="<%= team.name %>" style="max-width: 300px; max-height: 225px; width: auto; height: auto">
             </div>
-            <div class="col-sm-12 col-md-8">
+            <div class="col-sm-12 offset-md-2 col-md-6">
               <div class="media-body">
                 <div>
                   <%= team.name %>
@@ -14,7 +14,7 @@
                 <div>
                   <p><%= link_to 'View details', team_path(team) %></p>
                 </div>
-                <div class="w-50 mb-2">
+                <div class="w-75 mb-2">
                   <% if logged_in? %>
                     <%= render 'favorites/follow_button', team: team %>
                   <% end %>
