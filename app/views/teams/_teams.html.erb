@@ -1,12 +1,12 @@
  <ul class="list-unstyled">
     <% teams.each do |team| %>
-      <li class="media">
+      <li class="media border-bottom border-primary">
         <div class="container">
           <div class="row">
-            <div class="col-sm-4 text-center">
+            <div class="col-sm-12 col-md-4 text-center">
               <img class="mr-2 rounded" src="/<%= team.image_file%>" alt="<%= team.name %>" style="max-width: 300px; max-height: 225px; width: auto; height: auto;">
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-12 col-md-8">
               <div class="media-body">
                 <div>
                   <%= team.name %>
@@ -14,7 +14,7 @@
                 <div>
                   <p><%= link_to 'View details', team_path(team) %></p>
                 </div>
-                <div class="w-50">
+                <div class="w-50 mb-2">
                   <% if logged_in? %>
                     <%= render 'favorites/follow_button', team: team %>
                   <% end %>
