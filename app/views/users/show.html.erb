@@ -6,10 +6,9 @@
         <h3 class="card-title"><%= @user.name %></h3>
       </div>
     </div>
-    <ul>
-      <li class = "btn btn-primary btn-sm"><a style="color:white;" href="<%= followings_user_path(@user) %>">フォローユーザ<span class="badge badge-secondary"><%= @count_followings %></span></a></li>
-      <li class = "btn btn-primary btn-sm"><a style="color:white;" href="<%= followers_user_path(@user) %>">フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></li>
-    </ul>
+    <%= render 'relationships/follow_button', user: @user %>
+    <p class = "btn btn-info btn-block mt-3"><a style="color:white;" href="<%= followings_user_path(@user) %>">フォローユーザ<span class="badge badge-secondary"><%= @count_followings %></span></a></p>
+    <p class = "btn btn-info btn-block"><a style="color:white;" href="<%= followers_user_path(@user) %>">フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></p>
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">

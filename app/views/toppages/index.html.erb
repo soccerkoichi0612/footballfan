@@ -4,7 +4,8 @@
       <div class='text-center'>
         　<p>ログイン完了ユーザ: <%= current_user.name %></p>
           <h1>お気に入りにサッカーチームを追加しよう！</h1>
-          <h2><%= link_to 'サッカーチーム一覧', teams_path %></h2>
+          <h2>ここから登録<i class="far fa-hand-point-right"></i><%= link_to 'サッカーチーム一覧', teams_path %></h2>
+          <img src="/premier league.jpg" alt="premier-teams" style="width: 100%; height: auto; opacity:0.5">
       </div>
   </div>
 <% else %>
