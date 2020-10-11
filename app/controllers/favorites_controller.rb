@@ -12,7 +12,7 @@ class FavoritesController < ApplicationController
     team = Team.find(params[:favorite][:team_id])
     current_user.unfavorite(team)
     flash[:success] = 'お気に入りからはずしました。'
-    redirect_to teams_url
+    redirect_back(fallback_location: teams_url)
   end
   
 end

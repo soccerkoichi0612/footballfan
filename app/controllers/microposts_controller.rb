@@ -38,7 +38,7 @@ class MicropostsController < ApplicationController
     @team = @micropost.team
     @micropost.destroy
     flash[:success] = 'メッセージを削除しました。'
-    redirect_to @team
+    redirect_back(fallback_location: @team)
   end
   
   private
